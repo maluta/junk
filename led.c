@@ -1,8 +1,10 @@
 #include <linux/fs.h>
 #include <linux/cdev.h>
 #include <linux/parport.h>
+#include <linux/parport_pc.h>
 #include <asm/uaccess.h>
 #include <linux/platform_device.h>
+#include <linux/module.h>
 
 #define DEVICE_NAME "led"
 
@@ -89,7 +91,7 @@ int __init led_init(void) {
 	}
 
 
-	class_device_create(led_class, NULL, dev_number, NULL, DEVICE_NAME);
+	device_create(led_class, NULL, dev_number, NULL, DEVICE_NAME);
 
 	if (parport_register_driver(&led_driver)){
 		printk(KERN_ERR "Bad Parport Register\n");
@@ -103,7 +105,7 @@ int __init led_init(void) {
 void __exit led_cleanup(void) {
 
 	unregister_chrdev_region(dev_number, 1);
-	class_device_destroy(led_class, dev_number);
+	device_destroy(led_class, dev_number);
 	class_destroy(led_class);
 	return;
 
