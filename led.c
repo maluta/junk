@@ -4,7 +4,6 @@
 #include <linux/parport_pc.h>
 #include <asm/uaccess.h>
 #include <linux/platform_device.h>
-#include <linux/module.h>
 
 #define DEVICE_NAME "led"
 
