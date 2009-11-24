@@ -15,6 +15,12 @@
 #include <stdlib.h> // malloc()
 
 void swap(int *x, int *y) {
+
+    asm(""
+        : "=a"(*y),"=b"(*x)
+        : "a"(*x),"b"(*y)
+       );
+
 }
 
 void vector_copy(int *v_src, int *v_dst, int *count) {
@@ -104,5 +110,9 @@ int main(void)
  printf("** v1 = v2 **\n");
  for (i=0;i<5;i++) printf("v1[%d]=%d v2[%d]=%d\n",i,v1[i],i,v2[i]);
 
+ printf("-------- Swap  --------\n");
+ printf("Before swap: x=%d, y=%d\n",x,y);
+ swap(&x,&y);
+ printf("After swap:  x=%d, y=%d\n",x,y);
  return 0;
 }
