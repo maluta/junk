@@ -14,6 +14,21 @@
 #include <stdio.h>
 #include <stdlib.h> // malloc()
 
+void swap(int *x, int *y) {
+}
+
+void vector_copy(int *v_src, int *v_dst, int *count) {
+
+    asm("up: lodsl;"
+	"    stosl;"
+	"loop up;  "
+	:
+	: "S"(v_src), "D"(v_dst), "c"(*count)
+	: "%eax"
+	);
+
+}
+
 void _strncpy(char *src, char *dst, int *count) {
 
     asm("cld;"
@@ -50,9 +65,22 @@ int main(void)
 
  int x = 15, y = 88;
 
+ int i;
  int count=5;
+
+
  char s[]="tiago";
  char *s1;
+
+ int *v1;
+ int *v2;
+
+ v1 = malloc(sizeof(int)*5);
+ v2 = malloc(sizeof(int)*5);
+
+ /* fill v1 with some value */
+ for (i=0;i<5;i++)
+     v1[i]=i+5;
 
  s1 = malloc(sizeof(char)*5);
 
@@ -70,7 +98,11 @@ int main(void)
  _strncpy(s,s1,&count);
  printf("s=\"%s\" s1=\"%s\"\n",s,s1);
 
-
+ printf("-------- Vector copy  --------\n");
+ for (i=0;i<5;i++) printf("v1[%d]=%d v2[%d]=%d\n",i,v1[i],i,v2[i]);
+ vector_copy(v1,v2,&count);
+ printf("** v1 = v2 **\n");
+ for (i=0;i<5;i++) printf("v1[%d]=%d v2[%d]=%d\n",i,v1[i],i,v2[i]);
 
  return 0;
 }
