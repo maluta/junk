@@ -11,8 +11,9 @@ void _strncpy(char *src, char *dst, int *count) {
     asm("cld;"
         "rep movsb;"
         :
-        : "S"(src), "D"(dst), "c"(*count));
-
+        : "S"(src), // 'S' -> %esi
+	  "D"(dst), // 'D' -> %edi
+	  "c"(*count)); // 'c' -> %ecx
 }
 
 
