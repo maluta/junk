@@ -1,6 +1,14 @@
 /* 
- * Tiago Maluta
- * gcc -ggdb asm-inline.c -o asm-inline
+   Tiago Maluta
+   gcc -ggdb asm-inline.c -o asm-inline
+
+   The basic idea is that every asm() entry follow the skeleton:
+
+     asm("assembly code"
+        : output operand
+	: input operand
+	: clobbered register
+	);
 */
 
 #include <stdio.h>
