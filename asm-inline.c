@@ -11,8 +11,7 @@ void copy(int *from, int *to) {
      asm ("movl %1, %%eax;"
           "movl %%eax, %0;"
           :"=&r"(*to)
-          :"r"(*from)
-          :"%eax");
+          :"r"(*from));
 
 }
 
@@ -33,8 +32,8 @@ int main(void)
 
  printf("Begin: x=%d, y=%d\n",x,y);
  copy(&x,&y);
- printf("After copy(x,y): x=%d, y=%d\n",x,y);
+ printf("After copy([from]x,[to]y): x=%d, y=%d\n",x,y);
  inc(&x);
  printf("After inc(x): x=%d, y=%d\n",x,y);
-
+ return 0;
 }
