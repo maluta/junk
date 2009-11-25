@@ -10,10 +10,6 @@
 #define QLINGUISTEXTENSION_H
  
 #include <QString>
-#include <QWidget>
-#include <QFile>
-#include <QStringList>
-#include <QTextStream>
 #include <QByteArray>
 #include <QHttpRequestHeader>
 #include <QHttp>
