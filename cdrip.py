@@ -18,6 +18,6 @@ for i in range(disc_id[1]):
 	else:
 		mplayer_cmd="mplayer cdda://%d -ao pcm:file=\"%d - %s\" " % (i+1,i+1,name)
 
-	print mplayer_cmd
-#	subprocess.call(mplayer_cmd,shell=True)
+#	print mplayer_cmd
+	subprocess.call(mplayer_cmd,shell=True)
 
