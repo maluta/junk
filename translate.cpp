@@ -62,7 +62,7 @@ void LinguistExtension::_TranslationDone(bool error)
     if (result.endsWith("\""))
     result.truncate(result.length() - 1);
 
-    qDebug() << result;
+    qDebug() << result.toAscii();
 
     exit(1); // TODO: check if it's the correct way...
     

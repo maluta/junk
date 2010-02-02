@@ -1,5 +1,5 @@
 /* 
-   Tiago Maluta
+   Tiago Maluta - maluta@unifei.edu.br
    gcc -Wall -ggdb asm-inline.c -o asm-inline
 
    The basic idea is that every asm() entry follow the skeleton:
